@@ -1,13 +1,19 @@
-<form [formGroup]= "cardform">  
+<form [formGroup]= "cardform" (ngSubmit)="submit($event)">  
 
-   <app-input [control]="cardform.controls.name"></app-input> 
+   <app-input label= "Name" [control]="cardform.get('name')" ></app-input> 
+   <app-input label="Card Number" [control]="cardform.get('cardNumber')"></app-input>
+   <app-input label="expiryDate" [control]="cardform.get('expiryDate')"></app-input>
+   <app-input label="cvv" [control]="cardform.get('cvv')"></app-input>
+    <button class="button is-primary" [disabled]="cardform.invalid">Submit</button>
+    <button class="button is-primary"  [disabled]="cardform.invalid">Reset</button>
 
 </form>
 
 <div style="margin-top: 50px;">
-{{cardform.valid|json}}
+{{cardform.valid}}
 </div>
 <div>
+{{cardform.valid|json}}
 {{cardform.value | json}}
 {{cardform.controls.name.value | json}}
 {{cardform.controls.name.errors | json}}
