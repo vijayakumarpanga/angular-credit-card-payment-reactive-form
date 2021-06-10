@@ -1,0 +1,11 @@
+<input formControlName="control">
+<ng-container *ngIf="control.dirty &&
+                            control.touched &&
+                            control.errors">
+    <div *ngIf="control.errors.required">
+        Enter value for name
+    </div>
+    <div *ngIf="control.errors.minlength">
+        value should be minimum of Length {{control.errors.minlength.requiredLength}}
+    </div>
+</ng-container>
