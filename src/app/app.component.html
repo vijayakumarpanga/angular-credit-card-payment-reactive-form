@@ -1,20 +1,33 @@
-<form [formGroup]="cardform" (ngSubmit)="submit($event)">
+<div class="columns">
+    <div class="column">
+        <app-card [name]="cardform.get('name').value" [cardNumber]="cardform.get('cardNumber').value"
+            [expiration]="cardform.get('expiryDate').value">
+        </app-card>
+    </div>
+    <div class="column">
+        <div class="container">
+            <form [formGroup]="cardform" (ngSubmit)="submit($event)">
 
-    <app-input label="Name" [control]="cardform.get('name')"></app-input>
-    <app-input label="Card Number" [control]="cardform.get('cardNumber')"></app-input>
-    <app-input label="expiryDate" [control]="cardform.get('expiryDate')"></app-input>
-    <app-input label="cvv" [control]="cardform.get('cvv')"></app-input>
-    <button class="button is-primary" [disabled]="cardform.invalid">Submit</button>
-    <button type="button" class="button is-warning" [disabled]="cardform.invalid">Reset</button>
+                <app-input label="Name" [control]="cardform.get('name')"></app-input>
+                <app-input label="Card Number" [control]="cardform.get('cardNumber')"></app-input>
+                <div class="columns">
+                    <div class="column">
+                        <app-input label="expiryDate" [control]="cardform.get('expiryDate')"></app-input>
+                    </div>
+                    <div class="column">
+                        <app-input label="cvv" [control]="cardform.get('cvv')">
+                        </app-input>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="button is-primary" [disabled]="cardform.invalid">Submit</button>
+                    <button type="button" class="button is-warning" [disabled]="cardform.invalid"
+                        (click)="reset()">Reset</button>
+                </div>
+            </form>
 
-</form>
 
-<div style="margin-top: 50px;">
-    {{cardform.valid}}
-</div>
-<div>
-    {{cardform.valid|json}}
-    {{cardform.value | json}}
-    {{cardform.controls.name.value | json}}
-    {{cardform.controls.name.errors | json}}
+
+        </div>
+    </div>
 </div>

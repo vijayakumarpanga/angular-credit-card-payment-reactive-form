@@ -36,4 +36,7 @@ export class AppComponent {
     event.preventDefault();
     console.log("submitted");
   }
+  reset() {
+    this.cardform.reset();
+  }
 }
